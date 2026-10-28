@@ -1,0 +1,354 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Burgos | Portfolio</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        
+        :root {
+            --bg-color: #0a0e17;
+            --card-bg: #111827;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --sky-blue: #38bdf8;
+            --sky-blue-hover: #0284c7;
+        }
+
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        
+        .top-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            background-color: var(--sky-blue);
+            padding: 2px;
+            clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0 50%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-wrapper:hover {
+            transform: translateY(-3px);
+        }
+
+        .nav-link {
+            display: block;
+            background-color: var(--card-bg);
+            color: var(--sky-blue);
+            text-decoration: none;
+            padding: 10px 25px;
+            clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%);
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-wrapper:hover .nav-link {
+            background-color: var(--sky-blue);
+            color: #000;
+        }
+
+        
+        .section-card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--sky-blue);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            color: var(--sky-blue);
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px 40px 20px; /* Extra top padding for fixed nav */
+        }
+
+        
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--sky-blue);
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+            background-color: #1f2937; /* Placeholder background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .status-badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--sky-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid var(--sky-blue);
+        }
+
+        .info-section {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        h1 {
+            color: var(--sky-blue);
+            font-size: 2.8em;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: var(--text-muted);
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        p.about-text {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--sky-blue);
+            color: #000;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn.outline {
+            background-color: transparent;
+            color: var(--sky-blue);
+            border: 1px solid var(--sky-blue);
+        }
+
+        .btn:hover {
+            background-color: var(--sky-blue-hover);
+            color: #fff;
+            border-color: var(--sky-blue-hover);
+        }
+
+        
+        .skills-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .skills-container h3 {
+            color: var(--text-main);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skills-container h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--sky-blue);
+            bottom: -5px;
+            left: 25%;
+        }
+
+        .hex-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hex {
+            width: 90px;
+            height: 90px;
+            background-color: rgba(56, 189, 248, 0.1);
+            border: 2px solid var(--sky-blue);
+            color: var(--sky-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .hex:hover {
+            background-color: var(--sky-blue);
+            color: #000;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        
+        .contact {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #1f2937;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .contact a {
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        
+        @media (max-width: 768px) {
+            .top-nav {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .container {
+                padding-top: 130px;
+            }
+            .section-card {
+                padding: 30px 20px;
+            }
+            .hero {
+                text-align: center;
+                flex-direction: column;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <nav class="top-nav">
+        <div class="nav-wrapper"><a href="#about" class="nav-link">About Me</a></div>
+        <div class="nav-wrapper"><a href="#aspirations" class="nav-link">Aspirations</a></div>
+        <div class="nav-wrapper"><a href="#design-systems" class="nav-link">Design Systems</a></div>
+        <div class="nav-wrapper"><a href="#contact" class="nav-link">Contact Me</a></div>
+    </nav>
+
+    <div class="container">
+        
+        
+        <section id="about" class="section-card hero">
+            <div class="profile-section">
+                
+                <div class="profile-pic" style="border-radius:50%; background-color:#1f2937; display:flex; align-items:center; justify-content:center; overflow: hidden;">
+                    <img src="c:\Users\Cosmic\Downloads\Christian Burgos.jpg" alt="Christian Burgos" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentNode.innerHTML='[Your Pic Here]'">
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h1>Christian Burgos.</h1>
+                <h2>Aspiring Programmer</h2>
+                
+                <p class="about-text">
+                    Hello, I'm Christian Burgos. I'm an Information Technology student studying in Father Saturnino Urios University taking things one step at a time. Right now, I'm focusing on the fundamentals—like breaking down logic and building layouts from scratch in VS Code. I enjoy turning complex problems into simple, functional code.
+                </p>
+            </div>
+        </section>
+
+        
+        <section id="aspirations" class="section-card">
+            <h2 class="section-title">Aspirations</h2>
+            <p class="about-text">
+                My ultimate goal is to become a software programmer. I want to get to a point where I can confidently build entire applications by myself. I'm currently focusing on mastering my core classes and practicing my coding every day.
+            </p>
+        </section>
+
+        
+        <section id="design-systems" class="section-card">
+            <h2 class="section-title">Featured Design System</h2>
+            <p class="about-text">
+                    Below is the example of website and design system created using FIGMA.
+            </p>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                
+                <div style="display: inline-block; width: 100%; max-width: 600px; margin-bottom: 25px; padding: 10px; background-color: #1f2937; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
+                    
+                    <img src="C:\Users\Cosmic\Pictures\Screenshots\Screenshot 2026-10-28 104111.png" style="width: 100%; height: auto; display: block; border-radius: 8px;" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'padding: 80px 20px; color: var(--text-muted);\'>[Your Figma Screenshot Here]</div>'">
+                </div>
+                
+                <br>
+                
+                
+                
+                <a href="https://www.figma.com/proto/jMsuVVYld6yWTREJ2jLNmI/Untitled?node-id=18-8&t=vckwzgEHd7s61Enn-1" target="_blank" class="btn" style="display: inline-block; padding: 12px 30px; border-radius: 6px;">
+                    View in Figma
+                </a>
+            </div>
+        </section>
+
+        
+        <section id="contact" class="section-card" style="text-align: center;">
+            <h2 class="section-title">Contact Me</h2>
+            <p class="about-text" style="margin-bottom: 20px;">For more information Send me an email:</p>
+            <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" class="btn">christianburgos3321@gmail.com</a>
+        </section>
+
+    </div>
+
+</body>
+</html>
